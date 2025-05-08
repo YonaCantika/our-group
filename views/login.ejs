@@ -1,0 +1,137 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap");
+      body,
+      input,
+      button {
+        font-family: "Inter", sans-serif;
+      }
+      body {
+        background-color: #2649d1;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .bg-circle {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 600px;
+        height: 600px;
+        opacity: 0.3;
+        border-radius: 50%;
+        object-fit: cover;
+        z-index: 0;
+      }
+      .bg-blob {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 800px;
+        height: 600px;
+        opacity: 0.3;
+        object-fit: cover;
+        z-index: 0;
+      }
+      .login-form {
+        position: relative;
+        z-index: 1;
+        width: 300px;
+        color: white;
+      }
+      .login-form h2 {
+        font-weight: 900;
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+        text-align: center;
+      }
+      .login-form h1 {
+        font-weight: 900;
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+      .form-control {
+        background: transparent;
+        border: 1px solid white;
+        color: white;
+        font-size: 0.75rem;
+        padding-left: 2.5rem;
+        height: 2.5rem;
+      }
+      .form-control::placeholder {
+        color: white;
+        opacity: 1;
+      }
+      .input-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        font-size: 0.85rem;
+      }
+      .input-group {
+        position: relative;
+        margin-bottom: 1rem;
+      }
+      .btn-login {
+        background: white;
+        color: #2649d1;
+        font-weight: 700;
+        font-size: 0.75rem;
+        height: 2.75rem;
+        width: 100%;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        transition: box-shadow 0.3s ease;
+        border: none;
+      }
+      .btn-login:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      alt="Large blue circle shape background on bottom left"
+      aria-hidden="true"
+      class="bg-circle"
+      src="https://storage.googleapis.com/a1aa/image/e559979d-9db7-4edb-b40b-e714ba856268.jpg"
+    />
+    <img
+      alt="Abstract blue blob shape background on right side"
+      aria-hidden="true"
+      class="bg-blob"
+      src="https://storage.googleapis.com/a1aa/image/0720c100-53e1-4b7a-9b16-d39fd31d7aec.jpg"
+    />
+    <form class="login-form">
+      <h2>WELCOME BACK !!</h2>
+      <h1>LOG IN</h1>
+      <div class="input-group">
+        <i class="fas fa-user input-icon"></i>
+        <input type="text" class="form-control" placeholder="USERNAME" />
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock input-icon"></i>
+        <input type="password" class="form-control" placeholder="PASSWORD" />
+      </div>
+      <button type="submit" class="btn btn-login">LOGIN</button>
+    </form>
+  </body>
+</html>
