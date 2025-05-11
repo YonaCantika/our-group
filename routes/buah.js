@@ -1,14 +1,14 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const db = require('../config/database');
+const db = require("../config/database");
 
-router.get('/', function(req, res, next){
-    db.query(`select * from object`, (err, rows) => {
-        if (err) return res.status(500).json({ error: err.message });
-        console.log(rows)
-        res.render('buah/index', { data: rows});
-    })
-})
+router.get("/", function (req, res, next) {
+  db.query(`select * from object where id_cat = 2`, (err, rows) => {
+    if (err) return res.status(500).json({ error: err.message });
+    console.log(rows);
+    res.render("buah/index", { data: rows });
+  });
+});
 
 // router.post("/", function (req, res, next) {
 //   const newbuah = req.body;
