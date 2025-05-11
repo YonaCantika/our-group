@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <title>cApp Admin - Buah List</title>
+    <title>cApp Admin - Users List</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -133,7 +133,7 @@
       <nav class="sidebar d-flex flex-column pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link d-flex align-items-center" href="#">
+            <a class="nav-link active d-flex align-items-center" href="#">
               <i class="fas fa-palette me-2"></i> Dashboard
             </a>
           </li>
@@ -143,16 +143,19 @@
               data-bs-toggle="collapse"
               href="#usersSubmenu"
               role="button"
-              aria-expanded="false"
+              aria-expanded="true"
               aria-controls="usersSubmenu"
             >
               <span><i class="fas fa-user-friends me-2"></i>Users</span>
-              <i class="fas fa-chevron-right text-secondary"></i>
+              <i class="fas fa-chevron-down text-secondary"></i>
             </a>
-            <div class="collapse submenu" id="usersSubmenu">
+            <div class="collapse show submenu" id="usersSubmenu">
               <ul class="nav flex-column">
                 <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center" href="#">
+                  <a
+                    class="nav-link active text-orange-500 d-flex align-items-center"
+                    href="#"
+                  >
                     <i class="fas fa-caret-right me-1"></i> All Users
                   </a>
                 </li>
@@ -175,30 +178,23 @@
           </li>
           <li class="nav-item border-top pt-2">
             <a
-              class="nav-link d-flex align-items-center justify-content-between"
+              class="nav-link d-flex align-items-center justify-content-between collapsed"
               data-bs-toggle="collapse"
               href="#objectSubmenu"
               role="button"
-              aria-expanded="true"
+              aria-expanded="false"
               aria-controls="objectSubmenu"
             >
               <span><i class="fas fa-box me-2"></i>Object</span>
-              <i class="fas fa-chevron-down text-secondary"></i>
+              <i class="fas fa-chevron-right text-secondary"></i>
             </a>
-            <div class="collapse show submenu" id="objectSubmenu">
+            <div class="collapse submenu" id="objectSubmenu">
               <ul class="nav flex-column">
                 <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center" href="#">
-                    <i class="fas fa-caret-right me-1"></i> Hewan
-                  </a>
+                  <a class="nav-link" href="#">Hewan</a>
                 </li>
                 <li class="nav-item">
-                  <a
-                    class="nav-link active text-orange-500 d-flex align-items-center"
-                    href="#"
-                  >
-                    <i class="fas fa-caret-right me-1"></i> Buah
-                  </a>
+                  <a class="nav-link" href="#">Buah</a>
                 </li>
               </ul>
             </div>
@@ -217,26 +213,26 @@
         >
           <ol class="breadcrumb mb-0 p-0">
             <li class="breadcrumb-item d-flex align-items-center">
-              <i class="fas fa-box me-1 text-secondary"></i>
+              <i class="fas fa-users-cog me-1 text-secondary"></i>
               <a href="#" class="text-primary">Dashboard</a>
             </li>
             <li class="breadcrumb-item text-primary">&gt;</li>
-            <li class="breadcrumb-item text-primary">Object</li>
+            <li class="breadcrumb-item text-primary">Users</li>
             <li class="breadcrumb-item text-secondary">&gt;</li>
-            <li class="breadcrumb-item active" aria-current="page">Buah</li>
+            <li class="breadcrumb-item active" aria-current="page">List</li>
           </ol>
         </nav>
         <div
           class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2"
         >
-          <h1 class="text-primary fs-4 fw-normal m-0">Buah List</h1>
+          <h1 class="text-primary fs-4 fw-normal m-0">Users List</h1>
           <button type="button" class="btn btn-add">Add</button>
         </div>
         <section class="border rounded shadow-sm">
           <div
             class="bg-primary text-white fw-semibold px-3 py-2 user-select-none"
           >
-            Results for all buah items.
+            Results for all regiatered users.
           </div>
           <div
             class="d-flex flex-wrap justify-content-between align-items-center bg-light border-bottom px-3 py-2"
@@ -266,7 +262,7 @@
                 type="text"
                 id="searchInput"
                 class="form-control form-control-sm"
-                aria-label="Search buah"
+                aria-label="Search users"
               />
             </div>
           </div>
@@ -314,13 +310,13 @@
                     S.NO. <i class="fas fa-sort text-secondary"></i>
                   </th>
                   <th scope="col">
-                    Nama Buah <i class="fas fa-sort text-secondary"></i>
+                    First Name <i class="fas fa-sort text-secondary"></i>
                   </th>
                   <th scope="col">
-                    Warna <i class="fas fa-sort text-secondary"></i>
+                    Email <i class="fas fa-sort text-secondary"></i>
                   </th>
                   <th scope="col">
-                    Rasa <i class="fas fa-sort text-secondary"></i>
+                    Mobile Number <i class="fas fa-sort text-secondary"></i>
                   </th>
                   <th scope="col">
                     Created Date <i class="fas fa-sort text-secondary"></i>
@@ -334,62 +330,31 @@
               </thead>
               <tbody>
                 <tr>
-                  <td class="text-primary fw-semibold">1</td>
-                  <td>Apel</td>
-                  <td>Merah</td>
-                  <td>Manis</td>
-                  <td>2023-05-31 07:02:49</td>
-                  <td><span class="status-active">Active</span></td>
-                  <td class="text-center">
-                    <button
-                      class="btn btn-link p-0 text-primary"
-                      title="View"
-                      aria-label="View buah 1"
-                    >
-                      <i class="fas fa-search"></i>
-                    </button>
-                    <button
-                      class="btn btn-link p-0 text-success"
-                      title="Edit"
-                      aria-label="Edit buah 1"
-                    >
-                      <i class="fas fa-pencil-alt"></i>
-                    </button>
-                    <button
-                      class="btn btn-link p-0 text-danger"
-                      title="Delete"
-                      aria-label="Delete buah 1"
-                    >
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
                   <td class="text-primary fw-semibold">2</td>
-                  <td>Pisang</td>
-                  <td>Kuning</td>
-                  <td>Manis</td>
-                  <td>2023-05-30 06:09:02</td>
+                  <td>test Saloon</td>
+                  <td>erere@gfgh.vfgf</td>
+                  <td>5454545</td>
+                  <td>2019-05-31 06:09:02</td>
                   <td><span class="status-active">Active</span></td>
                   <td class="text-center">
                     <button
                       class="btn btn-link p-0 text-primary"
                       title="View"
-                      aria-label="View buah 2"
+                      aria-label="View user 2"
                     >
                       <i class="fas fa-search"></i>
                     </button>
                     <button
                       class="btn btn-link p-0 text-success"
                       title="Edit"
-                      aria-label="Edit buah 2"
+                      aria-label="Edit user 2"
                     >
                       <i class="fas fa-pencil-alt"></i>
                     </button>
                     <button
                       class="btn btn-link p-0 text-danger"
                       title="Delete"
-                      aria-label="Delete buah 2"
+                      aria-label="Delete user 2"
                     >
                       <i class="fas fa-trash"></i>
                     </button>
@@ -397,30 +362,30 @@
                 </tr>
                 <tr>
                   <td class="text-primary fw-semibold">3</td>
-                  <td>Jeruk</td>
-                  <td>Oranye</td>
-                  <td>Asam</td>
-                  <td>2023-05-29 06:07:48</td>
+                  <td>test Saloon</td>
+                  <td>test2133@gmail.com</td>
+                  <td>13265874</td>
+                  <td>2019-05-31 06:07:48</td>
                   <td><span class="status-active">Active</span></td>
                   <td class="text-center">
                     <button
                       class="btn btn-link p-0 text-primary"
                       title="View"
-                      aria-label="View buah 3"
+                      aria-label="View user 3"
                     >
                       <i class="fas fa-search"></i>
                     </button>
                     <button
                       class="btn btn-link p-0 text-success"
                       title="Edit"
-                      aria-label="Edit buah 3"
+                      aria-label="Edit user 3"
                     >
                       <i class="fas fa-pencil-alt"></i>
                     </button>
                     <button
                       class="btn btn-link p-0 text-danger"
                       title="Delete"
-                      aria-label="Delete buah 3"
+                      aria-label="Delete user 3"
                     >
                       <i class="fas fa-trash"></i>
                     </button>
@@ -428,30 +393,30 @@
                 </tr>
                 <tr>
                   <td class="text-primary fw-semibold">4</td>
-                  <td>Mangga</td>
-                  <td>Hijau</td>
-                  <td>Manis</td>
-                  <td>2023-05-28 05:58:56</td>
+                  <td>Test User</td>
+                  <td>test@gmail.com</td>
+                  <td>787887878</td>
+                  <td>2019-05-31 05:58:56</td>
                   <td><span class="status-active">Active</span></td>
                   <td class="text-center">
                     <button
                       class="btn btn-link p-0 text-primary"
                       title="View"
-                      aria-label="View buah 4"
+                      aria-label="View user 4"
                     >
                       <i class="fas fa-search"></i>
                     </button>
                     <button
                       class="btn btn-link p-0 text-success"
                       title="Edit"
-                      aria-label="Edit buah 4"
+                      aria-label="Edit user 4"
                     >
                       <i class="fas fa-pencil-alt"></i>
                     </button>
                     <button
                       class="btn btn-link p-0 text-danger"
                       title="Delete"
-                      aria-label="Delete buah 4"
+                      aria-label="Delete user 4"
                     >
                       <i class="fas fa-trash"></i>
                     </button>
@@ -459,30 +424,30 @@
                 </tr>
                 <tr>
                   <td class="text-primary fw-semibold">5</td>
-                  <td>Anggur</td>
-                  <td>Ungu</td>
-                  <td>Manis</td>
-                  <td>2023-05-27 04:02:27</td>
+                  <td>Rakesh</td>
+                  <td>rakeshbadiwal@gmail.com</td>
+                  <td>9685741254</td>
+                  <td>2019-05-21 04:02:27</td>
                   <td><span class="status-active">Active</span></td>
                   <td class="text-center">
                     <button
                       class="btn btn-link p-0 text-primary"
                       title="View"
-                      aria-label="View buah 5"
+                      aria-label="View user 5"
                     >
                       <i class="fas fa-search"></i>
                     </button>
                     <button
                       class="btn btn-link p-0 text-success"
                       title="Edit"
-                      aria-label="Edit buah 5"
+                      aria-label="Edit user 5"
                     >
                       <i class="fas fa-pencil-alt"></i>
                     </button>
                     <button
                       class="btn btn-link p-0 text-danger"
                       title="Delete"
-                      aria-label="Delete buah 5"
+                      aria-label="Delete user 5"
                     >
                       <i class="fas fa-trash"></i>
                     </button>
