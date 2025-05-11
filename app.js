@@ -20,6 +20,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use("/images", express.static("public/images"));
+app.use("/audio", express.static("public/audio"));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
