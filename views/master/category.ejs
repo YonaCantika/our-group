@@ -1,0 +1,192 @@
+<%- include('../partials/master/_header') %>
+
+    <main class="flex-grow-1 p-4 bg-white">
+        <nav aria-label="breadcrumb" class="breadcrumb-custom mb-3 d-flex align-items-center">
+            <ol class="breadcrumb mb-0 p-0">
+                <li class="breadcrumb-item d-flex align-items-center">
+                    <i class="fas fa-users-cog me-1 text-secondary"></i>
+                    <a href="#" class="text-primary">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item text-primary">&gt;</li>
+                <li class="breadcrumb-item text-primary">Users</li>
+                <li class="breadcrumb-item text-secondary">&gt;</li>
+                <li class="breadcrumb-item active" aria-current="page">List</li>
+            </ol>
+        </nav>
+        <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
+            <h1 class="text-primary fs-4 fw-normal m-0">Users List</h1>
+            <button type="button" class="btn btn-add">Add</button>
+        </div>
+        <section class="border rounded shadow-sm">
+            <div class="bg-primary text-white fw-semibold px-3 py-2 user-select-none">
+                Results for all regiatered users.
+            </div>
+            <div class="d-flex flex-wrap justify-content-between align-items-center bg-light border-bottom px-3 py-2">
+                <div class="d-flex align-items-center gap-2 text-secondary user-select-text">
+                    <span>Display</span>
+                    <select class="form-select form-select-sm w-auto" aria-label="Select number of records to display">
+                        <option>10</option>
+                        <option>25</option>
+                        <option>50</option>
+                        <option>100</option>
+                    </select>
+                    <span>records</span>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <label for="searchInput" class="form-label mb-0 text-secondary user-select-text">Search:</label>
+                    <input type="text" id="searchInput" class="form-control form-control-sm"
+                        aria-label="Search users" />
+                </div>
+            </div>
+            <div class="d-flex gap-1 px-3 py-2 border-bottom bg-white user-select-none table-toolbar">
+                <button type="button" class="btn btn-icon" title="Search" aria-label="Search">
+                    <i class="fas fa-search text-primary"></i>
+                </button>
+                <button type="button" class="btn btn-icon" title="Print" aria-label="Print">
+                    <i class="fas fa-print text-secondary"></i>
+                </button>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0 text-nowrap align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-primary">
+                                S.NO. <i class="fas fa-sort text-secondary"></i>
+                            </th>
+                            <th scope="col">
+                                First Name <i class="fas fa-sort text-secondary"></i>
+                            </th>
+                            <th scope="col">
+                                Email <i class="fas fa-sort text-secondary"></i>
+                            </th>
+                            <th scope="col">
+                                Mobile Number <i class="fas fa-sort text-secondary"></i>
+                            </th>
+                            <th scope="col">
+                                Created Date <i class="fas fa-sort text-secondary"></i>
+                            </th>
+                            <th scope="col">
+                                <i class="fas fa-clock"></i> Status
+                                <i class="fas fa-sort text-secondary"></i>
+                            </th>
+                            <th scope="col" class="text-primary">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-primary fw-semibold">1</td>
+                            <td>test Saloon</td>
+                            <td>admin@gmail.com</td>
+                            <td>78457845</td>
+                            <td>2019-05-31 07:02:49</td>
+                            <td><span class="status-active">Active</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-link p-0 text-primary" title="View" aria-label="View user 1">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <button class="btn btn-link p-0 text-success" title="Edit" aria-label="Edit user 1">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+                                <button class="btn btn-link p-0 text-danger" title="Delete" aria-label="Delete user 1">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-primary fw-semibold">2</td>
+                            <td>test Saloon</td>
+                            <td>erere@gfgh.vfgf</td>
+                            <td>5454545</td>
+                            <td>2019-05-31 06:09:02</td>
+                            <td><span class="status-active">Active</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-link p-0 text-primary" title="View" aria-label="View user 2">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <button class="btn btn-link p-0 text-success" title="Edit" aria-label="Edit user 2">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+                                <button class="btn btn-link p-0 text-danger" title="Delete" aria-label="Delete user 2">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-primary fw-semibold">3</td>
+                            <td>test Saloon</td>
+                            <td>test2133@gmail.com</td>
+                            <td>13265874</td>
+                            <td>2019-05-31 06:07:48</td>
+                            <td><span class="status-active">Active</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-link p-0 text-primary" title="View" aria-label="View user 3">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <button class="btn btn-link p-0 text-success" title="Edit" aria-label="Edit user 3">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+                                <button class="btn btn-link p-0 text-danger" title="Delete" aria-label="Delete user 3">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-primary fw-semibold">4</td>
+                            <td>Test User</td>
+                            <td>test@gmail.com</td>
+                            <td>787887878</td>
+                            <td>2019-05-31 05:58:56</td>
+                            <td><span class="status-active">Active</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-link p-0 text-primary" title="View" aria-label="View user 4">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <button class="btn btn-link p-0 text-success" title="Edit" aria-label="Edit user 4">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+                                <button class="btn btn-link p-0 text-danger" title="Delete" aria-label="Delete user 4">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-primary fw-semibold">5</td>
+                            <td>Rakesh</td>
+                            <td>rakeshbadiwal@gmail.com</td>
+                            <td>9685741254</td>
+                            <td>2019-05-21 04:02:27</td>
+                            <td><span class="status-active">Active</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-link p-0 text-primary" title="View" aria-label="View user 5">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <button class="btn btn-link p-0 text-success" title="Edit" aria-label="Edit user 5">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+                                <button class="btn btn-link p-0 text-danger" title="Delete" aria-label="Delete user 5">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <nav aria-label="Page navigation" class="d-flex justify-content-end p-3 bg-light border-top">
+                <ul class="pagination pagination-sm mb-0">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item"><a class="page-link" href="#">6</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+        </section>
+    </main>
+    <%- include('../partials/master/_footer') %>
