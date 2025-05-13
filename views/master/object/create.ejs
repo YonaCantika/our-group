@@ -1,0 +1,85 @@
+<%- include('../../partials/master/create/_head') %>
+
+    <main class="flex-grow-1 p-4 bg-white">
+        <!-- <nav aria-label="breadcrumb" class="breadcrumb-custom mb-3 d-flex align-items-center">
+            <ol class="breadcrumb mb-0 p-0">
+                <li class="breadcrumb-item d-flex align-items-center">
+                    <i class="fas fa-box me-1 text-secondary"></i>
+                    <a href="#" class="text-primary">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item text-primary">&gt;</li>
+                <li class="breadcrumb-item text-primary">Object</li>
+                <li class="breadcrumb-item text-primary">&gt;</li>
+                <li class="breadcrumb-item text-primary">Buah</li>
+                <li class="breadcrumb-item text-secondary">&gt;</li>
+                <li class="breadcrumb-item active" aria-current="page">Add</li>
+            </ol>
+        </nav> -->
+        <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
+            <h1 class="text-primary fs-4 fw-normal m-0">Add New Object</h1>
+            <div>
+                <button type="button" class="btn btn-secondary me-2">
+                    <i class="fas fa-arrow-left me-1"></i> Back
+                </button>
+            </div>
+        </div>
+
+        <section class="form-section">
+            <div class="form-header">
+                <i class="fas fa-plus-circle me-2"></i> Object Information
+            </div>
+            <div class="form-body">
+                <form>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="namaBuah" class="form-label required-field">Object Name</label>
+                                <input type="text" class="form-control" id="namaBuah" placeholder="Enter object name"
+                                    required />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="rasa" class="form-label required-field">Category</label>
+                                <select class="form-select" id="rasa" required>
+                                    <option value="" selected disabled>Select category</option>
+                                    <option value="Manis">Manis</option>
+                                    <option value="Asam">Asam</option>
+                                    <option value="Manis-Asam">Manis-Asam</option>
+                                    <option value="Pahit">Pahit</option>
+                                    <option value="Netral">Netral</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="gambar" class="form-label">Gambar</label>
+                                <input type="file" class="form-control" id="gambar" accept="image/*" />
+                                <small class="text-muted">Max file size: 2MB</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="gambar" class="form-label">Audio</label>
+                                <input type="file" class="form-control" id="gambar" accept="audio/*" />
+                                <small class="text-muted">Max file size: 2MB</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2 mt-4">
+                        <button type="reset" class="btn btn-secondary">
+                            <i class="fas fa-undo me-1"></i> Reset
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-1"></i> Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <%- include('../../partials/master/create/_foot') %>

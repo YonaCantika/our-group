@@ -230,8 +230,39 @@
         .table-toolbar i {
             font-size: 1rem;
         }
+
+        .btn-add a {
+            color: white;
+            text-decoration: none;
+        }
+
+        button[title="Delete"] a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button[title="Delete"] a:hover {
+            color: #dc2626;
+        }
     </style>
 </head>
 
 <body>
+    <header class="topbar d-flex align-items-center">
+        <div class="logo">
+            <i class="fas fa-swirl"></i>
+            cApp Admin
+        </div>
+        <div class="top-icons d-flex align-items-center ms-auto">
+            <button>
+                <div class="user-info d-flex align-items-center ms-3">
+                    <div class="text">
+                        <div>Welcome,</div>
+                        <div class="d-flex align-items-center">
+                            Jason <i class="fas fa-caret-down"></i>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </header>
     <%- include('_navbar') %>

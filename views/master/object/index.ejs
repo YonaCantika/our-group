@@ -1,6 +1,8 @@
-<%- include('../partials/master/_header') %>
+<%- include('../../partials/master/_header') %>
+
   <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
-    <h1 class="text-primary fs-4 fw-normal m-0">The List</h1>
+    <h1 class="text-primary fs-4 fw-normal m-0">List Object</h1>
+    <button type="button" class="btn btn-add"><a href="/master/object/create">Add Object</a></button>
   </div>
   <section class="border rounded shadow-sm">
     <div class="bg-primary text-white fw-semibold px-3 py-2 user-select-none">
@@ -40,9 +42,6 @@
             <th scope="col">
               Name Object <i class="fas fa-sort text-secondary"></i>
             </th>
-            <th scope="col">
-              Kategori <i class="fas fa-sort text-secondary"></i>
-            </th>
             <th scope="col" class="text-primary">Action</th>
           </tr>
         </thead>
@@ -55,17 +54,14 @@
               <td>
                 <%= data[i].object %>
               </td>
-              <td>
-                <%= data[i].nama %>
-              </td>
               <td class="text-center">
-                <button class="btn btn-link p-0 text-primary" title="View" aria-label="View user 3">
+                <button class="btn btn-link p-0 text-primary" title="View" aria-label="View user 1">
                   <i class="fas fa-search"></i>
                 </button>
-                <button class="btn btn-link p-0 text-success" title="Edit" aria-label="Edit user 3">
+                <button class="btn btn-link p-0 text-success" title="Edit" aria-label="Edit user 1">
                   <i class="fas fa-pencil-alt"></i>
                 </button>
-                <button class="btn btn-link p-0 text-danger" title="Delete" aria-label="Delete user 3">
+                <button class="btn btn-link p-0 text-danger" title="Delete" aria-label="Delete user 1">
                   <i class="fas fa-trash"></i>
                 </button>
               </td>
@@ -74,4 +70,5 @@
         </tbody>
       </table>
     </div>
-    <%- include('../partials/master/_footer') %>
+
+    <%- include('../../partials/master/_footer') %>
