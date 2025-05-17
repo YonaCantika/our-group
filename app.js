@@ -8,10 +8,9 @@ var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var buahRouter = require('./routes/buah');
-var hewanRouter = require('./routes/hewan');
+var loginRouter = require('./routes/login');
 
-let masterRouter = require('./routes/master');
+var masterRouter = require('./routes/master');
 
 var app = express();
 
@@ -41,8 +40,7 @@ app.use("/audio", express.static("public/audio"));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/buah', buahRouter);
-app.use('/hewan', hewanRouter);
+app.use('/login', loginRouter);
 app.use('/master', masterRouter);
 
 
