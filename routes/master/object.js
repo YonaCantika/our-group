@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const db = require('../../config/database');
+
 //konfigurasi photos and audio
 const multer = require('multer');
 const path = require('path');
@@ -84,7 +85,7 @@ router.post('/store', upload.fields([{
 router.get('/edit/:id', function (req, res, next) {
   const id = req.params.id;
 
-  db.query('select * from object where id = ?', [id], function (err, objectRows) {
+  db.query('SELECT * FROM object WHERE id = ?', [id], function (err, objectRows) {
     if (err) {
       req.flash('error', err.message);
       return res.redirect('/master/object');
@@ -95,7 +96,7 @@ router.get('/edit/:id', function (req, res, next) {
       return res.redirect('/master/object');
     }
 
-    db.query('select * from category', function (err, catRows) {
+    db.query('SELECT * FROM category', function (err, catRows) {
       if (err) {
         req.flash('error', err.message);
         return res.redirect('/master/object');
@@ -125,7 +126,7 @@ router.post('/update/:id', upload.fields([{
   const audioBaru = req.files['audio'] ? req.files['audio'][0].filename : null;
 
   // Ambil data lama dulu dari DB
-  db.query('select * from object where id = ?', [id], function (err, rows) {
+  db.query('SELECT * FROM object WHERE id = ?', [id], function (err, rows) {
     if (err) {
       req.flash('error', err.message);
       return res.redirect('/master/object');
@@ -150,7 +151,7 @@ router.post('/update/:id', upload.fields([{
     }
 
     // Buat query update
-    let query = 'update object set object = ?, id_cat = ?';
+    let query = 'UPDATE object SET object = ?, id_cat = ?';
     let params = [object, id_cat];
 
     if (gambarBaru) {
@@ -163,7 +164,7 @@ router.post('/update/:id', upload.fields([{
       params.push(audioBaru);
     }
 
-    query += ' where id = ?';
+    query += ' WHERE id = ?';
     params.push(id);
 
     db.query(query, params, function (err) {
