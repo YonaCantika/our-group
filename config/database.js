@@ -3,9 +3,9 @@ let connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'our'
+    database: 'db_team'
 });
-connection.connect(function(error) {
+connection.connect(function (error) {
     if (!!error) {
         console.log(error);
     } else {
