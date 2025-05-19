@@ -5,7 +5,7 @@
     <% data.forEach(function(item) { %>
     <div class="col-12 col-sm-6 col-md-3">
       <div class="card h-100">
-        <img src="<%= item.img %>" alt="Image" class="card-img-top" />
+        <img src="/images/<%= item.img %>" alt="Image" class="card-img-top" />
         <div
           class="d-flex justify-content-between align-items-center px-3 mt-2"
         >
@@ -14,7 +14,7 @@
         </div>
         <div class="card-footer">
           <audio controls preload="metadata">
-            <source src="<%= item.audio %>" type="audio/mp3" />
+            <source src="/audio/<%= item.audio %>" type="audio/mp3" />
             Your browser does not support the audio element.
           </audio>
         </div>
