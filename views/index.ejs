@@ -1,122 +1,363 @@
 <%- include('partials/_head') %>
 
-<link
-  href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap"
-  rel="stylesheet"
-/>
-
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
   body {
-    background: #e8f5e9;
-    font-family: "Quicksand", Arial, sans-serif;
     margin: 0;
-    min-height: 100vh;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #e6f0d9;
+    color: #2e4a2b;
   }
+
   .hero {
-    text-align: center;
-    margin: 40px 0 32px 0;
+    position: relative;
+    background: url('/images/background.jpg') no-repeat center center/cover;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
   }
-  .logo-bg {
-    display: inline-block;
-    background: linear-gradient(135deg, #a5d6a7 60%, #fffde4 100%);
-    border-radius: 50%;
-    padding: 18px;
-    box-shadow: 0 2px 8px rgba(56, 142, 60, 0.1);
+
+  .hero h1 {
+    font-size: 3.5rem;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 3px;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    margin: 10px 0 20px 0;
+  }
+
+  .btn-advanced-search {
+    background-color: #2e7d32;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-advanced-search:hover {
+    background-color: #1b5e20;
+  }
+
+  /* What's New Section */
+  .whats-new {
+    max-width: 900px;
+    margin: 40px auto 20px auto;
+  }
+
+  .whats-new h2 {
+    font-weight: 700;
+    letter-spacing: 1.5px;
     margin-bottom: 12px;
   }
-  .hero img {
-    width: 90px;
-    border-radius: 50%;
-    background: transparent;
-    border: none;
-    display: block;
+
+  .carousel-container {
+    position: relative;
   }
-  .hero h1 {
-    color: #388e3c;
-    font-size: 2em;
-    margin: 0 0 8px 0;
-    font-weight: 700;
-  }
-  .hero p {
-    color: #4caf50;
-    font-size: 1.1em;
-    margin: 0;
-  }
-  .categories {
+
+  .carousel {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 24px;
-    margin: 0 0 48px 0;
+    overflow: hidden;
+    gap: 12px;
   }
-  .category-card {
-    background: #fff;
-    border-radius: 14px;
-    box-shadow: 0 2px 8px rgba(56, 142, 60, 0.08);
-    padding: 18px 12px 14px 12px;
+
+  .carousel-item {
+    min-width: 140px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(56, 142, 60, 0.1);
     text-align: center;
-    width: 170px;
-    border: 1.5px solid #c8e6c9;
-    transition: box-shadow 0.18s, border-color 0.18s, transform 0.18s;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
   }
-  .category-card:hover {
-    box-shadow: 0 6px 18px rgba(56, 142, 60, 0.13);
-    border-color: #81c784;
-    transform: translateY(-6px) scale(1.03);
+
+  .carousel-item.active {
+    border-color: #2e7d32;
   }
-  .category-card img {
-    width: 70px;
-    height: 70px;
+
+  .carousel-item img {
+    width: 100%;
+    height: 320px;
     object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    background: #f0f0f0;
-    border: 1.5px solid #a5d6a7;
+    border-radius: 8px 8px 0 0;
   }
-  .category-card h3 {
-    margin: 0;
-    font-size: 1.08em;
-    color: #388e3c;
+
+  .carousel-item p {
+    margin: 8px 0 12px 0;
+    font-weight: 600;
+    color: #2e7d32;
+  }
+
+  .carousel-nav {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+  }
+
+  .carousel-nav button {
+    background: rgba(46, 125, 50, 0.7);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 6px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: all;
+    transition: background 0.3s ease;
+  }
+
+  .carousel-nav button:hover {
+    background: #1b5e20;
+  }
+
+  /* Species Counts */
+  .species-counts {
+    max-width: 900px;
+    margin: 20px auto 40px auto;
+    background: #c8e6c9;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    color: #2e7d32;
     font-weight: 700;
-    letter-spacing: 0.2px;
   }
-  .category-card a {
+
+  .species-count {
+    text-align: center;
+  }
+
+  .species-count .number {
+    font-size: 3rem;
+    margin-top: 8px;
+  }
+
+  /* Month Section */
+  .month-section {
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    display: flex;
+    gap: 20px;
+  }
+
+  .month-card {
+    flex: 1;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .month-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .month-card .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.7) 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .month-card .overlay h3 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+
+  /* Did You Know Section */
+  .did-you-know {
+    max-width: 900px;
+    margin: 0 auto 60px auto;
+    background: #dcedc8;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    gap: 20px;
+  }
+
+  .did-you-know .text {
+    flex: 2;
+  }
+
+  .did-you-know .text h3 {
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+
+  .did-you-know .text p {
+    line-height: 1.5;
+  }
+
+  .did-you-know .btn-learn-more {
     display: inline-block;
-    margin-top: 10px;
-    color: #fff;
-    background: #43a047;
-    padding: 6px 16px;
-    border-radius: 14px;
-    text-decoration: none;
+    margin-top: 16px;
+    background-color: #2e7d32;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
     font-weight: 700;
-    font-size: 0.98em;
-    transition: background 0.15s;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
   }
-  .category-card a:hover {
-    background: #388e3c;
+
+  .did-you-know .btn-learn-more:hover {
+    background-color: #1b5e20;
+  }
+
+  .did-you-know .images {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .did-you-know .images img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .month-section {
+      flex-direction: column;
+    }
+    .did-you-know {
+      flex-direction: column;
+    }
+    .did-you-know .images {
+      flex-direction: row;
+      gap: 12px;
+    }
+    .did-you-know .images img {
+      height: 70px;
+      flex: 1;
+    }
   }
 </style>
 
 <div class="hero">
-  <span class="logo-bg">
-    <img src="/images/logo.png" alt="Flora Fauna Logo" />
-  </span>
-  <h1>Flora & Fauna Nusantara</h1>
-  <p>Eksplorasi keindahan alam Indonesia</p>
+  <h1>OBJEKPEDIA</h1>
+  <p>Browse the database for various objects found in Indonesia online</p>
+  <a href="/advanced-search" class="btn-advanced-search">ADVANCED SEARCH</a>
 </div>
 
-<div class="categories">
-  <% category.forEach(function(cat) { %>
-  <div class="category-card">
-    <img
-      src="/images/<%= cat.nama.toLowerCase() %>.jpg"
-      alt="<%= cat.nama %>"
-      onerror="this.onerror=null;this.src='/images/flow.jpg';"
-    />
-    <h3><%= cat.nama %></h3>
-    <a href="/kategori/<%= cat.id_cat %>">Lihat Koleksi</a>
+<section class="whats-new">
+  <h2>NEW OBJECTS</h2>
+  <div class="carousel-container">
+    <div class="carousel" id="carousel">
+      <% whatsNew.forEach(function(item, index) { %>
+      <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+        <img src="<%= item.img ? '/images/' + item.img : '/images/placeholder.jpg' %>" alt="<%= item.object %>" />
+        <p><%= item.object %></p>
+      </div>
+      <% }) %>
+    </div>
+    <div class="carousel-nav">
+      <button id="prevBtn">&#8249;</button>
+      <button id="nextBtn">&#8250;</button>
+    </div>
   </div>
-  <% }) %>
-</div>
+</section>
+
+<section class="species-counts">
+  <div class="species-count">
+    <div>Total Categories</div>
+    <div class="number"><%= totalCategories %></div>
+  </div>
+  <div class="species-count">
+    <div>Total Objects</div>
+    <div class="number"><%= totalObjects %></div>
+  </div>
+</section>
+
+<section class="month-section">
+  <div class="month-card">
+    <img src="<%= objectOfMonth1 && objectOfMonth1.img ? '/images/' + objectOfMonth1.img : '/images/placeholder.jpg' %>" alt="<%= objectOfMonth1 ? objectOfMonth1.object : '' %>" />
+    <div class="overlay">
+      <h3>OBJECT OF THE MONTH</h3>
+      <p><%= objectOfMonth1 ? objectOfMonth1.object : '' %></p>
+    </div>
+  </div>
+  <div class="month-card">
+    <img src="<%= objectOfMonth2 && objectOfMonth2.img ? '/images/' + objectOfMonth2.img : '/images/placeholder.jpg' %>" alt="<%= objectOfMonth2 ? objectOfMonth2.object : '' %>" />
+    <div class="overlay">
+      <h3>OBJECT OF THE MONTH</h3>
+      <p><%= objectOfMonth2 ? objectOfMonth2.object : '' %></p>
+    </div>
+  </div>
+</section>
+
+<section class="did-you-know">
+  <div class="text">
+    <h3>DID YOU KNOW?</h3>
+    <p>
+      Interesting facts about objects<br />
+      Did you know that many traditional objects in Indonesia have unique cultural significance and history?
+    </p>
+    <a href="/did-you-know" class="btn-learn-more">LEARN MORE</a>
+  </div>
+  <div class="images">
+    <img src="/images/object1.jpg" alt="Object 1" />
+    <img src="/images/object2.jpg" alt="Object 2" />
+    <img src="/images/object3.jpg" alt="Object 3" />
+  </div>
+</section>
+
+<script>
+  const carousel = document.getElementById('carousel');
+  const items = carousel.querySelectorAll('.carousel-item');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let currentIndex = 0;
+
+  function updateCarousel() {
+    items.forEach((item, index) => {
+      item.classList.toggle('active', index === currentIndex);
+    });
+    const itemWidth = items[0].offsetWidth + 12; // width + gap
+    carousel.scrollTo({
+      left: itemWidth * currentIndex,
+      behavior: 'smooth'
+    });
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + items.length) % items.length;
+    updateCarousel();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % items.length;
+    updateCarousel();
+  });
+</script>
 
 <%- include('partials/_foot') %>

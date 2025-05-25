@@ -250,18 +250,20 @@
 <body>
     <header class="topbar d-flex align-items-center">
         <div class="logo">
-            <i class="fas fa-swirl"></i>
+            <img src="/images/logo.png" alt="Icon" style="width: 24px; height: 24px;" />
             cApp Admin
         </div>
         <div class="top-icons d-flex align-items-center ms-auto">
             <button>
                 <div class="user-info d-flex align-items-center ms-3">
-                    <div class="text">
-                        <div>Welcome,</div>
-                        <div class="d-flex align-items-center">
-                            Jason <i class="fas fa-caret-down"></i>
-                        </div>
-                    </div>
+        <div class="text">
+            <div>Welcome,</div>
+            <div class="d-flex align-items-center">
+                <%= user ? (user.username || user.user || user.name) : 'Guest' %>
+                &nbsp;|&nbsp;
+                <a href="/logout" style="color: white; text-decoration: none;">Logout</a>
+            </div>
+        </div>
                 </div>
         </div>
     </header>

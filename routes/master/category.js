@@ -4,14 +4,30 @@ const db = require('../../config/database');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-    db.query('select * from category', function (err, rows) {
+    let limit = parseInt(req.query.limit) || 10;
+    let page = parseInt(req.query.page) || 1;
+    let offset = (page - 1) * limit;
+
+    db.query('SELECT COUNT(*) AS count FROM category', function (err, countResult) {
         if (err) {
             req.flash('error', err);
-        } else {
-            res.render('master/category/index', {
-                data: rows
-            });
+            return res.render('master/category/index', { data: [], limit: limit, page: page, totalPages: 0 });
         }
+        let totalCount = countResult[0].count;
+        let totalPages = Math.ceil(totalCount / limit);
+
+        db.query('select * from category LIMIT ? OFFSET ?', [limit, offset], function (err, rows) {
+            if (err) {
+                req.flash('error', err);
+                return res.render('master/category/index', { data: [], limit: limit, page: page, totalPages: totalPages });
+            }
+            res.render('master/category/index', {
+                data: rows,
+                limit: limit,
+                page: page,
+                totalPages: totalPages
+            });
+        });
     });
 });
 
