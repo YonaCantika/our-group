@@ -29,14 +29,30 @@ const upload = multer({
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-  db.query('select * from object', function (err, rows) {
+  let limit = parseInt(req.query.limit) || 10;
+  let page = parseInt(req.query.page) || 1;
+  let offset = (page - 1) * limit;
+
+  db.query('SELECT COUNT(*) AS count FROM object', function (err, countResult) {
     if (err) {
       req.flash('error', err);
-    } else {
-      res.render('master/object/index', {
-        data: rows
-      });
+      return res.render('master/object/index', { data: [], limit: limit, page: page, totalPages: 0 });
     }
+    let totalCount = countResult[0].count;
+    let totalPages = Math.ceil(totalCount / limit);
+
+    db.query('SELECT * FROM object o JOIN category c ON o.id_cat = c.id_cat LIMIT ? OFFSET ?', [limit, offset], function (err, rows) {
+      if (err) {
+        req.flash('error', err);
+        return res.render('master/object/index', { data: [], limit: limit, page: page, totalPages: totalPages });
+      }
+      res.render('master/object/index', {
+        data: rows,
+        limit: limit,
+        page: page,
+        totalPages: totalPages
+      });
+    });
   });
 });
 

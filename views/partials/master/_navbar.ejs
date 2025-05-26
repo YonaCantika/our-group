@@ -2,7 +2,7 @@
     <nav class="sidebar d-flex flex-column pt-3">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active d-flex align-items-center" href="/master">
+                <a class="nav-link <%= currentPath === '/master' ? 'active' : '' %> d-flex align-items-center" href="/master">
                     <i class="fas fa-palette me-2"></i> Dashboard
                 </a>
             </li>
@@ -26,19 +26,20 @@
                 </div>
             </li> -->
             <li class="nav-item border-top pt-2">
-                <a class="nav-link d-flex align-items-center" href="/master/category">
+                <a class="nav-link <%= currentPath.startsWith('/master/category') ? 'active' : '' %> d-flex align-items-center" href="/master/category">
                     <i class="fas fa-th-large me-2"></i> Categories
                 </a>
             </li>
 
             <li class="nav-item border-top pt-2">
-                <a class="nav-link d-flex align-items-center" href="/master/object">
+                <a class="nav-link <%= currentPath.startsWith('/master/object') ? 'active' : '' %> d-flex align-items-center" href="/master/object">
                     <i class="fas fa-box me-2"></i> Object
                 </a>
             </li>
-            <li class="nav-item border-top border-bottom pt-2 pb-2 text-center text-secondary">
+            <!-- Remove this menu item below Object as per user request -->
+            <!-- <li class="nav-item border-top border-bottom pt-2 pb-2 text-center text-secondary">
                 <i class="fas fa-angle-double-left"></i>
-            </li>
+            </li> -->
         </ul>
     </nav>
     <main class="flex-grow-1 p-4 bg-white">

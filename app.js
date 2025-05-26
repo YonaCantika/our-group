@@ -25,7 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   cookie: {
-    maxAge: 6000
+    maxAge: 86400000  // 24 hours
   },
   store: new session.MemoryStore,
   saveUninitialized: true,
@@ -34,6 +34,18 @@ app.use(session({
 }))
 
 app.use(flash());
+
+// Middleware to make user available in all views and set current path
+app.use(function(req, res, next) {
+  console.log('Session user:', req.session.user);
+  if (req.session && req.session.user) {
+    res.locals.user = req.session.user;
+  } else {
+    res.locals.user = null;
+  }
+  res.locals.currentPath = req.path;
+  next();
+});
 
 app.use("/images", express.static("public/images"));
 app.use("/audio", express.static("public/audio"));

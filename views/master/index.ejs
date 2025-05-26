@@ -7,15 +7,17 @@
       Results data.
     </div>
     <div class="d-flex flex-wrap justify-content-between align-items-center bg-light border-bottom px-3 py-2">
-      <div class="d-flex align-items-center gap-2 text-secondary user-select-text">
-        <span>Display</span>
-        <select class="form-select form-select-sm w-auto" aria-label="Select number of records to display">
-          <option>10</option>
-          <option>25</option>
-          <option>50</option>
-          <option>100</option>
-        </select>
-        <span>records</span>
+      <div class="d-flex align-items-center gap-1 text-secondary user-select-text">
+        <label for="limitSelect" class="mb-0">Display</label>
+        <form id="displayForm" method="get" action="/master" class="d-inline m-0 p-0">
+          <select id="limitSelect" name="limit" class="form-select form-select-sm w-auto" aria-label="Select number of records to display" onchange="document.getElementById('displayForm').submit()">
+            <option value="10" <%= limit === 10 ? 'selected' : '' %>>10</option>
+            <option value="25" <%= limit === 25 ? 'selected' : '' %>>25</option>
+            <option value="50" <%= limit === 50 ? 'selected' : '' %>>50</option>
+            <option value="100" <%= limit === 100 ? 'selected' : '' %>>100</option>
+          </select>
+        </form>
+        <span class="ms-1">records</span>
       </div>
       <div class="d-flex align-items-center gap-2">
         <label for="searchInput" class="form-label mb-0 text-secondary user-select-text">Search:</label>
@@ -50,7 +52,7 @@
           <% for(var i=0; i < data.length; i++){ %>
             <tr>
               <td class="text-primary fw-semibold">
-                <%= (i+1) %>
+                <%= ((page - 1) * limit) + i + 1 %>
               </td>
               <td>
                 <%= data[i].object %>
@@ -75,3 +77,20 @@
       </table>
     </div>
     <%- include('../partials/master/_footer') %>
+    <div class="d-flex justify-content-center mt-3">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item <%= page <= 1 ? 'disabled' : '' %>">
+            <a class="page-link" href="?page=<%= page - 1 %>&limit=<%= limit %>" tabindex="-1" aria-disabled="<%= page <= 1 %>">Previous</a>
+          </li>
+          <% for(let p = 1; p <= totalPages; p++) { %>
+            <li class="page-item <%= p === page ? 'active' : '' %>">
+              <a class="page-link" href="?page=<%= p %>&limit=<%= limit %>"><%= p %></a>
+            </li>
+          <% } %>
+          <li class="page-item <%= page >= totalPages ? 'disabled' : '' %>">
+            <a class="page-link" href="?page=<%= page + 1 %>&limit=<%= limit %>">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
