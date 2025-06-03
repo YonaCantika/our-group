@@ -10,11 +10,12 @@
       <div class="d-flex align-items-center gap-1 text-secondary user-select-text">
         <label for="limitSelect" class="mb-0">Display</label>
         <form id="displayForm" method="get" action="/master" class="d-inline m-0 p-0">
-          <select id="limitSelect" name="limit" class="form-select form-select-sm w-auto" aria-label="Select number of records to display" onchange="document.getElementById('displayForm').submit()">
-            <option value="10" <%= limit === 10 ? 'selected' : '' %>>10</option>
-            <option value="25" <%= limit === 25 ? 'selected' : '' %>>25</option>
-            <option value="50" <%= limit === 50 ? 'selected' : '' %>>50</option>
-            <option value="100" <%= limit === 100 ? 'selected' : '' %>>100</option>
+          <select id="limitSelect" name="limit" class="form-select form-select-sm w-auto"
+            aria-label="Select number of records to display" onchange="document.getElementById('displayForm').submit()">
+            <option value="10" <%=limit===10 ? 'selected' : '' %>>10</option>
+            <option value="25" <%=limit===25 ? 'selected' : '' %>>25</option>
+            <option value="50" <%=limit===50 ? 'selected' : '' %>>50</option>
+            <option value="100" <%=limit===100 ? 'selected' : '' %>>100</option>
           </select>
         </form>
         <span class="ms-1">records</span>
@@ -45,7 +46,7 @@
             <th scope="col">
               Kategori <i class="fas fa-sort text-secondary"></i>
             </th>
-            <th scope="col" class="text-primary">Action</th>
+            <!-- <th scope="col" class="text-primary">Action</th> -->
           </tr>
         </thead>
         <tbody>
@@ -60,7 +61,7 @@
               <td>
                 <%= data[i].nama %>
               </td>
-              <td class="text-center">
+              <!-- <td class="text-center">
                 <button class="btn btn-link p-0 text-primary" title="View" aria-label="View user 3">
                   <i class="fas fa-search"></i>
                 </button>
@@ -70,27 +71,30 @@
                 <button class="btn btn-link p-0 text-danger" title="Delete" aria-label="Delete user 3">
                   <i class="fas fa-trash"></i>
                 </button>
-              </td>
+              </td> -->
             </tr>
             <% } %>
         </tbody>
       </table>
     </div>
     <%- include('../partials/master/_footer') %>
-    <div class="d-flex justify-content-center mt-3">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-          <li class="page-item <%= page <= 1 ? 'disabled' : '' %>">
-            <a class="page-link" href="?page=<%= page - 1 %>&limit=<%= limit %>" tabindex="-1" aria-disabled="<%= page <= 1 %>">Previous</a>
-          </li>
-          <% for(let p = 1; p <= totalPages; p++) { %>
-            <li class="page-item <%= p === page ? 'active' : '' %>">
-              <a class="page-link" href="?page=<%= p %>&limit=<%= limit %>"><%= p %></a>
+      <div class="d-flex justify-content-center mt-3">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <li class="page-item <%= page <= 1 ? 'disabled' : '' %>">
+              <a class="page-link" href="?page=<%= page - 1 %>&limit=<%= limit %>" tabindex="-1"
+                aria-disabled="<%= page <= 1 %>">Previous</a>
             </li>
-          <% } %>
-          <li class="page-item <%= page >= totalPages ? 'disabled' : '' %>">
-            <a class="page-link" href="?page=<%= page + 1 %>&limit=<%= limit %>">Next</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+            <% for(let p=1; p <=totalPages; p++) { %>
+              <li class="page-item <%= p === page ? 'active' : '' %>">
+                <a class="page-link" href="?page=<%= p %>&limit=<%= limit %>">
+                  <%= p %>
+                </a>
+              </li>
+              <% } %>
+                <li class="page-item <%= page >= totalPages ? 'disabled' : '' %>">
+                  <a class="page-link" href="?page=<%= page + 1 %>&limit=<%= limit %>">Next</a>
+                </li>
+          </ul>
+        </nav>
+      </div>
